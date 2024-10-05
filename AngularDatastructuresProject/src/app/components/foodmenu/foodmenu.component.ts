@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './foodmenu.component.css'
 })
 export class FoodmenuComponent {
-  foodList: string[] = [];
+  foodList: string[] = [
+    'Adobo',
+    'Sinigang',
+    'Lechon',
+    'Pancit',
+    'Lumpiang Shanghai'
+  ];
   foodName: string = '';
 
   addFoods() {
