@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './grocerylist.component.css'
 })
 export class GrocerylistComponent {
-  groceryList: string[] = [];
+  groceryList: string[] = [
+    'Rice',
+    'Chicken',
+    'Eggs',
+    'Vegetables',
+    'Canned Goods'
+  ];
   groceryName: string = '';
 
   addGroceries() {
