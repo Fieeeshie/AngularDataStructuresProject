@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './exerciselist.component.css'
 })
 export class ExerciselistComponent {
-  exerciseList: string[] = [];
+  exerciseList: string[] = [
+    'Jumping Jacks',
+    'Push-Ups',
+    'Squats',
+    'Lunges',
+    'Burpees'
+  ];
   exerciseName: string = '';
 
   addExercises() {
