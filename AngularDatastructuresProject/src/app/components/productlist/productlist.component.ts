@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './productlist.component.css'
 })
 export class ProductlistComponent {
-  productList: string[] = [];
+  productList: string[] = [
+    'Laptop',
+    'Smartphone',
+    'Headphones',
+    'Smartwatch',
+    'Tablet'
+  ];
   productName: string = '';
 
   addProducts() {
