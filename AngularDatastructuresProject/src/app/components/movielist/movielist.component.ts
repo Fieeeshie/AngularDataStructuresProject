@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './movielist.component.css'
 })
 export class MovielistComponent {
-  movieList: string[] = [];
+  movieList: string[] = [
+    'Heneral Luna',
+    'One More Chance',
+    'The Hows of Us',
+    'Kita Kita',
+    'Hello, Love, Goodbye',
+  ];
   movieName: string = '';
 
   addMovies() {
