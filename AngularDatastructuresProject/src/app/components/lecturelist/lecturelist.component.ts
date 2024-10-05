@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './lecturelist.component.css'
 })
 export class LecturelistComponent {
-  lectureList: string[] = [];
+  lectureList: string[] = [
+    'Introduction to Computer Science',
+    'Fundamentals of Programming',
+    'Data Structures and Algorithms',
+    'Web Development Basics',
+    'Software Engineering Principles'
+  ];
   lectureName: string = '';
 
   addLectures() {
