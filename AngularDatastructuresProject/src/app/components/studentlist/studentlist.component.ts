@@ -6,7 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './studentlist.component.css'
 })
 export class StudentlistComponent {
-  studentList: string[] = [];
+  studentList: string[] = [
+    'Toribio, Fiercieval',
+    'Walter Inductivo',
+    'Cano Roerenz',
+    'Taay James Kent',
+    'Xavier De Jesus',
+    'Rodney Idanan',
+
+  ];
   studentName: string = '';
 
   addStudents() {
