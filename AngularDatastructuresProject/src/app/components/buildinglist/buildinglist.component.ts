@@ -6,11 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './buildinglist.component.css'
 })
 export class BuildinglistComponent {
-  buildingList: string[] = ['Empire State Building', 'Burj Khalifa', 'Eiffel Tower', 'The Shard', 'One World Trade Center'];
+  buildingList: string[] = [
+    'Makati City Hall',
+    'BGC Stopover Pavilion',
+    'SM Megamall',
+    'Greenbelt Mall',
+    'The Manila Ocean Park'
+  ]
   buildingName: string = '';
 
   addBuildings() {
     this.buildingList.push(this.buildingName);
-    this.buildingName = '';
   }
 }
