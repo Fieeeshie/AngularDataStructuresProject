@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './languagelist.component.css'
 })
 export class LanguagelistComponent {
-  languageList: string[] = [];
+  languageList: string[] = [
+    'Filipino',
+    'English',
+    'Cebuano',
+    'Ilocano',
+    'Hiligaynon'
+  ];
   languageName: string = '';
 
   addLanguages() {
