@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './videolist.component.css'
 })
 export class VideolistComponent {
-  videoList: string[] = [];
+  videoList: string[] = [
+    'Video 1: Introduction to Angular',
+    'Video 2: Angular Directives',
+    'Video 3: Building Components',
+    'Video 4: Routing in Angular',
+    'Video 5: Angular Services'
+  ];
   videoName: string = '';
 
   addVideos() {
