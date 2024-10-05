@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './eventlist.component.css'
 })
 export class EventlistComponent {
-  eventList: string[] = [];
+  eventList: string[] = [
+    'Sinulog Festival',
+    'Ati-Atihan Festival',
+    'Pahiyas Festival',
+    'Panagbenga Festival',
+    'Kadayawan Festival'
+  ];
   eventName: string = '';
 
   addEvents() {
