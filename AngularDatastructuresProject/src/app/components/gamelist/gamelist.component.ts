@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './gamelist.component.css'
 })
 export class GamelistComponent {
-  gameList: string[] = [];
+  gameList: string[] = [
+    'Mobile Legends: Bang Bang',
+    'Call of Duty: Mobile',
+    'Genshin Impact',
+    'Valorant',
+    'PUBG Mobile'
+  ];
   gameName: string = '';
 
   addGames() {
