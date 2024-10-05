@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './toollist.component.css'
 })
 export class ToollistComponent {
-  toolList: string[] = [];
+  toolList: string[] = [
+    'Hammer', 
+    'Screwdriver', 
+    'Wrench', 
+    'Pliers', 
+    'Drill'];
+ 
   toolName: string = '';
 
   addTools() {
