@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './animallist.component.css'
 })
 export class AnimallistComponent {
-  animalList: string[] = ['Lion', 'Elephant', 'Tiger', 'Giraffe', 'Zebra'];
+  animalList: string[] = [
+    'Lion',
+    'Tiger',
+    'Elephant',
+    'Giraffe',
+    'Zebra'
+  ];
   animalName: string = '';
 
   addAnimals() {
