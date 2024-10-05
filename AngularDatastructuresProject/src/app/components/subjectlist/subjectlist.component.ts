@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './subjectlist.component.css'
 })
 export class SubjectlistComponent {
-  subjectList: string[] = [];
+  subjectList: string[] = [
+    'Mathematics',
+    'Physics',
+    'Chemistry',
+    'Biology',
+    'Computer Science'
+  ];
   subjectName: string = '';
 
   addSubjects() {
