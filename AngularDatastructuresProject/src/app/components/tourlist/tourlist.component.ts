@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './tourlist.component.css'
 })
 export class TourlistComponent {
-  tourList: string[] = [];
+  tourList: string[] = [
+    'City Tour',
+    'Beach Adventure',
+    'Mountain Hiking',
+    'Historical Sites',
+    'Wildlife Safari'
+  ];
   tourName: string = '';
 
   addTours() {
