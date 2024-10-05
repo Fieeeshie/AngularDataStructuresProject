@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './tvshowlist.component.css'
 })
 export class TvshowlistComponent {
-  tvShowList: string[] = [];
+  tvShowList: string[] = [
+    'Breaking Bad',
+    'Stranger Things',
+    'The Crown',
+    'Game of Thrones',
+    'The Mandalorian'
+  ];
   tvShowName: string = '';
 
   addTvShows() {
