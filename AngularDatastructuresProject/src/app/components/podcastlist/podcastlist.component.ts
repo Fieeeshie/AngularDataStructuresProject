@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './podcastlist.component.css'
 })
 export class PodcastlistComponent {
-  podcastList: string[] = [];
+  podcastList: string[] = [
+    'The Daily',
+    'Stuff You Should Know',
+    'Crime Junkie',
+    'How I Built This',
+    'The Joe Rogan Experience'
+  ];
   podcastName: string = '';
 
   addPodcasts() {
