@@ -6,7 +6,17 @@ import { Component } from '@angular/core';
   styleUrl: './mobileapplist.component.css'
 })
 export class MobileapplistComponent {
-  mobileAppList: string[] = [];
+  mobileAppList: string[] = [
+    'Facebook',
+    'Instagram',
+    'Shopee',
+    'Grab',
+    'GCash',
+    'Messenger',
+    'Twitter',
+    'TikTok',
+    'YouTube'
+  ];
   mobileAppName: string = '';
 
   addMobileApps() {
