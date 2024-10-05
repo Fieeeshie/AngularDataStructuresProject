@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './countrylist.component.css'
 })
 export class CountrylistComponent {
-  countryList: string[] = [];
+  countryList: string[] = [
+    'Philippines',
+    'United States',
+    'Japan',
+    'South Korea',
+    'Canada'
+  ];
   countryName: string = '';
 
   addCountries() {
