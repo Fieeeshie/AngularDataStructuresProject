@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './paintinglist.component.css'
 })
 export class PaintinglistComponent {
-  paintingList: string[] = [];
+  paintingList: string[] = [
+    'Starry Night - Vincent van Gogh',
+    'Mona Lisa - Leonardo da Vinci',
+    'The Persistence of Memory - Salvador Dalí',
+    'The Scream - Edvard Munch',
+    'Girl with a Pearl Earring - Johannes Vermeer'
+  ];
   paintingName: string = '';
 
   addPaintings() {
