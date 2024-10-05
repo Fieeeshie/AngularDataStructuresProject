@@ -6,11 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './citylist.component.css'
 })
 export class CitylistComponent {
-  cityList: string[] = ['Manila', 'Cebu City', 'Davao City', 'Quezon City', 'Iloilo City'];
+  cityList: string[] = [
+    'Manila',
+    'Quezon City',
+    'Cebu City',
+    'Davao City',
+    'Zamboanga City'
+  ];
   cityName: string = '';
 
   addCities() {
     this.cityList.push(this.cityName);
-    this.cityName = '';
   }
 }
