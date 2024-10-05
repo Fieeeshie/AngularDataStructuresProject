@@ -1,0 +1,12 @@
+.gray-button {
+    background-color: transparent; /* Remove background color */
+    border: 1px solid #ccc; /* Light border for a subtle effect */
+    color: #333; /* Text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .minimalist-button:hover {
+    background-color: #f0f0f0; /* Light gray on hover */
+    color: #000; /* Darker text on hover */
+  }
+  
