@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './vegetablelist.component.css'
 })
 export class VegetablelistComponent {
-  vegetableList: string[] = [];
+  vegetableList: string[] = [
+    'Carrot',
+    'Broccoli',
+    'Spinach',
+    'Tomato',
+    'Cucumber'
+  ];
   vegetableName: string = '';
 
   addVegetables() {
