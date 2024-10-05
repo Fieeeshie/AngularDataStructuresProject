@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './flowerlist.component.css'
 })
 export class FlowerlistComponent {
-  flowerList: string[] = [];
+  flowerList: string[] = [
+    'Sampaguita',
+    'Waling-Waling',
+    'Bougainvillea',
+    'Roses',
+    'Orchids'
+  ];
   flowerName: string = '';
 
   addFlowers() {
