@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './stationerylist.component.css'
 })
 export class StationerylistComponent {
-  stationeryList: string[] = [];
+  stationeryList: string[] = [
+    'Notebook',
+    'Pen',
+    'Pencil',
+    'Eraser',
+    'Highlighter'
+  ];
   stationeryName: string = '';
 
   addStationeries() {
