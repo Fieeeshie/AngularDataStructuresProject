@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './accessorylist.component.css'
 })
 export class AccessorylistComponent {
-  accessoryList: string[] = ['Mouse', 'Keyboard', 'KeyChain', 'Walanako Maisip'];
+  accessoryList: string[] = [
+    'Barong Tagalog',
+    'Terno',
+    'Sampaguita Necklace',
+    'Banig (woven mat)',
+    'Capiz Shell Decor'
+  ];
   accessoryName: string = '';
 
   addAccessories() {
