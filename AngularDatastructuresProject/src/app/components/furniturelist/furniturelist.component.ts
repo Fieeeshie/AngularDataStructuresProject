@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './furniturelist.component.css'
 })
 export class FurniturelistComponent {
-  furnitureList: string[] = [];
+  furnitureList: string[] = [
+    'Sofa',
+    'Dining Table',
+    'Bed',
+    'Wardrobe',
+    'Bookshelf'
+  ];
   furnitureName: string = '';
 
   addFurnitures() {
