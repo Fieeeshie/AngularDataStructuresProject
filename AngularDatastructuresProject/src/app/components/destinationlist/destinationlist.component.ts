@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './destinationlist.component.css'
 })
 export class DestinationlistComponent {
-  destinationList: string[] = [];
+  destinationList: string[] = [
+    'Boracay',
+    'Palawan',
+    'Cebu',
+    'Batanes',
+    'Siargao'
+  ];
   destinationName: string = '';
 
   addDestinations() {
