@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './frameworklist.component.css'
 })
 export class FrameworklistComponent {
-  frameworkList: string[] = [];
+  frameworkList: string[] = [
+    'Angular',
+    'React',
+    'Vue.js',
+    'Laravel',
+    'Django'
+  ];
   frameworkName: string = '';
 
   addFrameworks() {
