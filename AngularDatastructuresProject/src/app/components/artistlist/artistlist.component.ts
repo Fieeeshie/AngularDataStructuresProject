@@ -6,9 +6,14 @@ import { Component } from '@angular/core';
   styleUrl: './artistlist.component.css'
 })
 export class ArtistlistComponent {
-  artistList: string[] = ['Pablo Picasso', 'Vincent van Gogh', 'Leonardo da Vinci', 'Claude Monet', 'Salvador Dalí'];
+  artistList: string[] = [
+    'Juan Luna',
+    'Fernando Amorsolo',
+    'Bencab (Benedicto Cabrera)',
+    'Carmen Guerrero Nakpil',
+    'Ang Kiukok'
+  ];
   artistName: string = '';
-    
 
   addArtists() {
     this.artistList.push(this.artistName);
