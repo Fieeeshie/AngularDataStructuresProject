@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './softwarelist.component.css'
 })
 export class SoftwarelistComponent {
-  softwareList: string[] = [];
+  softwareList: string[] = [
+    'Visual Studio Code',
+    'JetBrains IntelliJ IDEA',
+    'Adobe Photoshop',
+    'Microsoft Office',
+    'Slack'
+  ];
   softwareName: string = '';
 
   addSoftwares() {
