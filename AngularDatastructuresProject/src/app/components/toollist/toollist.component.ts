@@ -1,15 +1,21 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-toollist',
-  templateUrl: './toollist.component.html',
-  styleUrl: './toollist.component.css'
+  selector: 'app-tourlist',
+  templateUrl: './tourlist.component.html',
+  styleUrl: './tourlist.component.css'
 })
-export class ToollistComponent {
-  toolList: string[] = [];
-  toolName: string = '';
+export class TourlistComponent {
+  tourList: string[] = [
+    'City Tour',
+    'Beach Adventure',
+    'Mountain Hiking',
+    'Historical Sites',
+    'Wildlife Safari'
+  ];
+  tourName: string = '';
 
-  addTools() {
-    this.toolList.push(this.toolName);
+  addTours() {
+    this.tourList.push(this.tourName);
   }
 }
