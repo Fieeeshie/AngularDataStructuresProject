@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './laptoplist.component.css'
 })
 export class LaptoplistComponent {
-  laptopList: string[] = [];
+  laptopList: string[] = [
+    'Acer',
+    'ASUS',
+    'Dell',
+    'HP',
+    'Lenovo'
+  ];
   laptopName: string = '';
 
   addLaptops() {
