@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './mealplanlist.component.css'
 })
 export class MealplanlistComponent {
-  mealPlanList: string[] = [];
+  mealPlanList: string[] = [
+    'Adobo with Rice',
+    'Sinigang na Baboy',
+    'Kare-Kare',
+    'Pancit Canton',
+    'Lechon Kawali'
+  ];
   mealPlanName: string = '';
 
   addMealPlans() {
