@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './inventorylist.component.css'
 })
 export class InventorylistComponent {
-  inventoryList: string[] = [];
+  inventoryList: string[] = [
+    'Rice',
+    'Canned Goods',
+    'Toiletries',
+    'Cleaning Supplies',
+    'Cooking Oil'
+  ];
   inventoryName: string = '';
 
   addInventories() {
