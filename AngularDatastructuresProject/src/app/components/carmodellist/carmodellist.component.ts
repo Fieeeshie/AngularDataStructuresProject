@@ -6,11 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './carmodellist.component.css'
 })
 export class CarmodellistComponent {
-  carModelList: string[] = ['Toyota Corolla', 'Honda Civic', 'Tesla Model 3', 'Ford Mustang', 'BMW 3 Series'];
+  carModelList: string[] = [
+    'Toyota Vios',
+    'Mitsubishi Montero Sport',
+    'Honda CR-V',
+    'Nissan Navara',
+    'Ford Ranger'
+  ];
   carModelName: string = '';
 
   addCarModels() {
     this.carModelList.push(this.carModelName);
-    this.carModelName = ''
   }
 }
