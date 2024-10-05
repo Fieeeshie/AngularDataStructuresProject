@@ -6,7 +6,13 @@ import { Component } from '@angular/core';
   styleUrl: './developertoolslist.component.css'
 })
 export class DevelopertoolslistComponent {
-  developerToolList: string[] = [];
+  developerToolList: string[] = [
+    'Visual Studio Code',
+    'Git',
+    'Postman',
+    'Docker',
+    'Sublime Text'
+  ];
   developerToolName: string = '';
 
   addDeveloperTools() {
