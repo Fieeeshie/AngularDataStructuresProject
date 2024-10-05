@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrl: './composerlist.component.css'
 })
 export class ComposerlistComponent {
-  composerList: string[] = [];
+  composerList: string[] = [
+    'Justin Vasquez',
+    'Micheal Pangilan',
+  ];
   composerName: string = '';
 
   addComposers() {
