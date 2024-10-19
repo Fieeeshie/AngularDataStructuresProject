@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FoodMenuService, FoodItem } from '../services/foodmenu/foodmenu.service';
 
 @Component({
   selector: 'app-foodmenu',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './foodmenu.component.css'
 })
 export class FoodmenuComponent {
-  foodList: string[] = [
-    'Adobo',
-    'Sinigang',
-    'Lechon',
-    'Pancit',
-    'Lumpiang Shanghai'
-  ];
-  foodName: string = '';
+  menu: FoodItem[] = [];
+  id: string = '';
+  food: string = '';
+  price: number = 0;
 
-  addFoods() {
-    this.foodList.push(this.foodName);
+  constructor(private foodMenuService: FoodMenuService) {
+    this.menu = this.foodMenuService.getMenu();
+  }
+
+  addFood(): void {
+    this.foodMenuService.addFood(this.id, this.food, this.price);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.food = '';
+    this.price = 0;
   }
 }

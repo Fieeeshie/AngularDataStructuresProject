@@ -11,7 +11,7 @@ describe('PhonecontactlistComponent', () => {
       imports: [PhonecontactlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(PhonecontactlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -11,7 +11,7 @@ describe('TvshowlistComponent', () => {
       imports: [TvshowlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(TvshowlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

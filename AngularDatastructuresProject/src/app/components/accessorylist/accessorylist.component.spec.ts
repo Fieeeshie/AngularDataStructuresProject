@@ -11,7 +11,7 @@ describe('AccessorylistComponent', () => {
       imports: [AccessorylistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(AccessorylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

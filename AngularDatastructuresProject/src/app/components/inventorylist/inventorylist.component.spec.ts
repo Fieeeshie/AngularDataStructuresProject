@@ -11,7 +11,7 @@ describe('InventorylistComponent', () => {
       imports: [InventorylistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(InventorylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

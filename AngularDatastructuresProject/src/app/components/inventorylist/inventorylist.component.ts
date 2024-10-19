@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InventoryListService, InventoryItem } from '../services/inventorylist/inventorylist.service';
 
 @Component({
   selector: 'app-inventorylist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './inventorylist.component.css'
 })
 export class InventorylistComponent {
-  inventoryList: string[] = [
-    'Rice',
-    'Canned Goods',
-    'Toiletries',
-    'Cleaning Supplies',
-    'Cooking Oil'
-  ];
-  inventoryName: string = '';
+  inventoryList: InventoryItem[] = [];
+  id: string = '';
+  product: string = '';
+  quantity: number = 0;
 
-  addInventories() {
-    this.inventoryList.push(this.inventoryName);
+  constructor(private inventoryListService: InventoryListService) {
+    this.inventoryList = this.inventoryListService.getInventoryList();
+  }
+
+  addInventoryItem(): void {
+    this.inventoryListService.addInventoryItem(this.id, this.product, this.quantity);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.product = '';
+    this.quantity = 0;
   }
 }

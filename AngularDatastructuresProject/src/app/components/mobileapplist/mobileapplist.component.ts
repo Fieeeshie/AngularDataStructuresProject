@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MobileAppListService, MobileApp } from '../services/mobileapplist/mobileapplist.service';
 
 @Component({
   selector: 'app-mobileapplist',
@@ -6,20 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './mobileapplist.component.css'
 })
 export class MobileapplistComponent {
-  mobileAppList: string[] = [
-    'Facebook',
-    'Instagram',
-    'Shopee',
-    'Grab',
-    'GCash',
-    'Messenger',
-    'Twitter',
-    'TikTok',
-    'YouTube'
-  ];
-  mobileAppName: string = '';
+  mobileAppList: MobileApp[] = [];
+  id: string = '';
+  app: string = '';
+  descriptions: string = '';
 
-  addMobileApps() {
-    this.mobileAppList.push(this.mobileAppName);
+  constructor(private mobileAppListService: MobileAppListService) {
+    this.mobileAppList = this.mobileAppListService.getMobileAppList();
+  }
+
+  addMobileApp(): void {
+    this.mobileAppListService.addMobileApp(this.id, this.app, this.descriptions);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.app = '';
+    this.descriptions = '';
   }
 }

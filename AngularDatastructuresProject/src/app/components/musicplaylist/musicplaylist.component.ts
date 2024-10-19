@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MusicPlaylistService, Music } from '../services/musicplaylist/musicplaylist.service';
 
 @Component({
   selector: 'app-musicplaylist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './musicplaylist.component.css'
 })
 export class MusicplaylistComponent {
-  musicList: string[] = [
-    'Tadhana - Up Dharma Down',
-    'Buwan - Juan Karlos',
-    'Ikaw - Yeng Constantino',
-    'Kahit Ayaw Mo Na - This Band',
-    'Hawak Kamay - Yeng Constantino'
-  ];
-  musicName: string = '';
+  playlist: Music[] = [];
+  id: string = '';
+  music: string = '';
+  genre: string = '';
 
-  addMusics() {
-    this.musicList.push(this.musicName);
+  constructor(private musicPlaylistService: MusicPlaylistService) {
+    this.playlist = this.musicPlaylistService.getPlaylist();
+  }
+
+  addMusic(): void {
+    this.musicPlaylistService.addMusic(this.id, this.music, this.genre);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.music = '';
+    this.genre = '';
   }
 }

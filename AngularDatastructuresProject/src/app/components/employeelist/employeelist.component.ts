@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmployeeListService, employeeList } from '../services/employeelist/employeelist.service';
 
 @Component({
   selector: 'app-employeelist',
@@ -6,16 +7,24 @@ import { Component } from '@angular/core';
   styleUrl: './employeelist.component.css'
 })
 export class EmployeelistComponent {
-  employeeList: string[] = [
-    'Maria Clara',
-    'Jose Rizal',
-    'Andres Bonifacio',
-    'Emilio Aguinaldo',
-    'Apolinario Mabini'
-  ];
-  employeeName: string = '';
+  employee: employeeList[] = [];
+  id: string = '';
+  name: string = '';
+  job: string = '';
 
-  addEmployees() {
-    this.employeeList.push(this.employeeName);
+  constructor(private employeeListService: EmployeeListService) {
+    this.employee = this.employeeListService.getEmployee();
+  }
+
+  addEmployee(): void {
+    this.employeeListService.addEmployee(this.id, this.name, this.job);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.name = '';
+    this.job = '';
   }
 }
+

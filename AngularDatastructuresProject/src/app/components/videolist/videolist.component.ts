@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { VideoListService, Video } from '../services/videolist/videolist.service';
 
 @Component({
   selector: 'app-videolist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './videolist.component.css'
 })
 export class VideolistComponent {
-  videoList: string[] = [
-    'Video 1: Introduction to Angular',
-    'Video 2: Angular Directives',
-    'Video 3: Building Components',
-    'Video 4: Routing in Angular',
-    'Video 5: Angular Services'
-  ];
-  videoName: string = '';
+  videoList: Video[] = [];
+  id: string = '';
+  video: string = '';
+  descriptions: string = '';
 
-  addVideos() {
-    this.videoList.push(this.videoName);
+  constructor(private videoListService: VideoListService) {
+    this.videoList = this.videoListService.getVideoList();
+  }
+
+  addVideo(): void {
+    this.videoListService.addVideo(this.id, this.video, this.descriptions);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.video = '';
+    this.descriptions = '';
   }
 }

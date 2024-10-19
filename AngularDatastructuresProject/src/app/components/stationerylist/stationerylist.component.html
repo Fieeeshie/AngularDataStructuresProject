@@ -1,12 +1,31 @@
-<div class="container my-5">
-  <h1>Stationery List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Stationery Name" [(ngModel)]="stationeryName"/>
-  <button type="button" class="btn btn-primary" (click)="addStationeries()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let stationery of stationeryList">
-      {{stationery}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Stationery List</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Id</th>
+        <th>Item</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stationery of stationeryList">
+        <td>{{ stationery.id }}</td>
+        <td>{{ stationery.item }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Stationery Item</h3>
+  <form (ngSubmit)="addStationeryItem()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="item">Item:</label>
+      <input type="text" [(ngModel)]="item" name="item" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Stationery Item</button>
+  </form>
 </div>

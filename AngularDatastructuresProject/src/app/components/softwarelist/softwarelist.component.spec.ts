@@ -11,7 +11,7 @@ describe('SoftwarelistComponent', () => {
       imports: [SoftwarelistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(SoftwarelistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

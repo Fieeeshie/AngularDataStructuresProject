@@ -11,7 +11,7 @@ describe('StationerylistComponent', () => {
       imports: [StationerylistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(StationerylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

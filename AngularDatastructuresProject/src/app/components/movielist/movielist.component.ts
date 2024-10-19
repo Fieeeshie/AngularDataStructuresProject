@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MovieListService, MovieList } from '../services/movielist/movielist.service';
 
 @Component({
   selector: 'app-movielist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './movielist.component.css'
 })
 export class MovielistComponent {
-  movieList: string[] = [
-    'Heneral Luna',
-    'One More Chance',
-    'The Hows of Us',
-    'Kita Kita',
-    'Hello, Love, Goodbye',
-  ];
-  movieName: string = '';
+  movies: MovieList[] = [];
+  id: string = '';
+  movie: string = '';
+  yearReleased: number = 0;
 
-  addMovies() {
-    this.movieList.push(this.movieName);
+  constructor(private movieListService: MovieListService) {
+    this.movies = this.movieListService.getMovies();
+  }
+
+  addMovie(): void {
+    this.movieListService.addMovie(this.id, this.movie, this.yearReleased);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.movie = '';
+    this.yearReleased = 0;
   }
 }

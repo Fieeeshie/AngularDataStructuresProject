@@ -11,7 +11,7 @@ describe('MobileapplistComponent', () => {
       imports: [MobileapplistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(MobileapplistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

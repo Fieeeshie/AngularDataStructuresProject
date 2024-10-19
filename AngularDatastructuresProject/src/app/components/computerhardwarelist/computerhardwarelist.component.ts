@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComputerHardwareListService, ComputerHardware } from '../services/computerhardwarelist/computerhardwarelist.service';
 
 @Component({
   selector: 'app-computerhardwarelist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './computerhardwarelist.component.css'
 })
 export class ComputerhardwarelistComponent {
-  computerHardwareList: string[] = [
-    'Asus ROG Strix GTX 1660',
-    'Gigabyte AORUS GeForce RTX 3080',
-    'Intel Core i5-12400F',
-    'AMD Ryzen 5 5600X',
-    'MSI B450 TOMAHAWK MAX'
-  ];
-  computerHardwareName: string = '';
+  computerHardwareList: ComputerHardware[] = [];
+  id: string = '';
+  hardware: string = '';
+  descriptions: string = '';
+  price: number = 0;
 
-  addComputerHardwares() {
-    this.computerHardwareList.push(this.computerHardwareName);
+  constructor(private computerHardwareListService: ComputerHardwareListService) {
+    this.computerHardwareList = this.computerHardwareListService.getComputerHardwareList();
+  }
+
+  addComputerHardware(): void {
+    this.computerHardwareListService.addComputerHardware(this.id, this.hardware, this.descriptions, this.price);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.hardware = '';
+    this.descriptions = '';
+    this.price = 0;
   }
 }

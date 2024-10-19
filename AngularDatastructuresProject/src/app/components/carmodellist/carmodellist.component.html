@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Car Model List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Car Model Name" [(ngModel)]="carModelName"/>
-  <button type="button" class="btn btn-primary" (click)="addCarModels()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let carModel of carModelList">
-      {{carModel}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Car Model List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Car Name</th>
+        <th>Year Released</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let car of cars">
+        <td>{{ car.id }}</td>
+        <td>{{ car.carName }}</td>
+        <td>{{ car.yearReleased }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Car</h3>
+  <form (ngSubmit)="addCar()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="carName">Car Name:</label>
+      <input type="text" [(ngModel)]="carName" name="carName" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="yearReleased">Year Released:</label>
+      <input type="number" [(ngModel)]="yearReleased" name="yearReleased" class="form-control" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Car</button>
+  </form>
 </div>

@@ -1,12 +1,31 @@
-<div class="container my-5">
-  <h1>Sports List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Sports Name" [(ngModel)]="sportName"/>
-  <button type="button" class="btn btn-primary" (click)="addSports()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let sport of sportList">
-      {{sport}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Sport List</h2>
+  
+  <table class="table table-striped table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Id</th>
+        <th>Sport</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sport of sports">
+        <td>{{ sport.id }}</td>
+        <td>{{ sport.sport }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Sport</h3>
+  <form (ngSubmit)="addSport()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="sport">Sport:</label>
+      <input type="text" [(ngModel)]="sport" name="sport" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Sport</button>
+  </form>
 </div>

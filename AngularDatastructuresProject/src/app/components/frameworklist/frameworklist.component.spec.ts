@@ -11,7 +11,7 @@ describe('FrameworklistComponent', () => {
       imports: [FrameworklistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(FrameworklistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

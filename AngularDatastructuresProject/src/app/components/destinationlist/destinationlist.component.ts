@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DestinationListService, Destination } from '../services/destinationlist/destinationlist.service';
 
 @Component({
   selector: 'app-destinationlist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './destinationlist.component.css'
 })
 export class DestinationlistComponent {
-  destinationList: string[] = [
-    'Boracay',
-    'Palawan',
-    'Cebu',
-    'Batanes',
-    'Siargao'
-  ];
-  destinationName: string = '';
+  destinationList: Destination[] = [];
+  id: string = '';
+  destination: string = '';
+  location: string = '';
+  entrancePrice: number = 0;
 
-  addDestinations() {
-    this.destinationList.push(this.destinationName);
+  constructor(private destinationListService: DestinationListService) {
+    this.destinationList = this.destinationListService.getDestinationList();
+  }
+
+  addDestination(): void {
+    this.destinationListService.addDestination(this.id, this.destination, this.location, this.entrancePrice);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.destination = '';
+    this.location = '';
+    this.entrancePrice = 0;
   }
 }

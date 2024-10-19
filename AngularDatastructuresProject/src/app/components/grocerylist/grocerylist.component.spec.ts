@@ -11,7 +11,7 @@ describe('GrocerylistComponent', () => {
       imports: [GrocerylistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(GrocerylistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Building List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Building Name" [(ngModel)]="buildingName"/>
-  <button type="button" class="btn btn-primary" (click)="addBuildings()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let building of buildingList">
-      {{building}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Building List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Building Name</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let building of buildings">
+        <td>{{ building.id }}</td>
+        <td>{{ building.buildingname }}</td>
+        <td>{{ building.location }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Building</h3>
+  <form (ngSubmit)="addBuilding()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="buildingname">Building Name:</label>
+      <input type="text" [(ngModel)]="buildingname" name="buildingname" class="form-control" required/>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" [(ngModel)]="location" name="location" class="form-control" required/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Building</button>
+  </form>
 </div>

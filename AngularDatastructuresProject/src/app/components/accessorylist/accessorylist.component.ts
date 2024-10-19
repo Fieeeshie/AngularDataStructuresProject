@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AccessoryListService, Accessory } from '../services/accessorylist/accessorylist.service';
 
 @Component({
   selector: 'app-accessorylist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './accessorylist.component.css'
 })
 export class AccessorylistComponent {
-  accessoryList: string[] = [
-    'Barong Tagalog',
-    'Terno',
-    'Sampaguita Necklace',
-    'Banig (woven mat)',
-    'Capiz Shell Decor'
-  ];
-  accessoryName: string = '';
+  accessoryList: Accessory[] = [];
+  id: string = '';
+  accessory: string = '';
+  brand: string = '';
+  price: number = 0;
 
-  addAccessories() {
-    this.accessoryList.push(this.accessoryName);
+  constructor(private accessoryListService: AccessoryListService) {
+    this.accessoryList = this.accessoryListService.getAccessoryList();
+  }
+
+  addAccessory(): void {
+    this.accessoryListService.addAccessory(this.id, this.accessory, this.brand, this.price);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.accessory = '';
+    this.brand = '';
+    this.price = 0;
   }
 }

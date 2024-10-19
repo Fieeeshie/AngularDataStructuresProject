@@ -11,7 +11,7 @@ describe('VideolistComponent', () => {
       imports: [VideolistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(VideolistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

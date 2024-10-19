@@ -11,7 +11,7 @@ describe('PaintinglistComponent', () => {
       imports: [PaintinglistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(PaintinglistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

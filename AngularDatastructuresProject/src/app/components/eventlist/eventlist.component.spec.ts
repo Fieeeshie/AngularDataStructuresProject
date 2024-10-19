@@ -11,7 +11,7 @@ describe('EventlistComponent', () => {
       imports: [EventlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(EventlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

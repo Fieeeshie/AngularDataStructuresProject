@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TVShowListService, TVShow } from '../services/tvshowlist/tvshowlist.service';
 
 @Component({
   selector: 'app-tvshowlist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './tvshowlist.component.css'
 })
 export class TvshowlistComponent {
-  tvShowList: string[] = [
-    'Breaking Bad',
-    'Stranger Things',
-    'The Crown',
-    'Game of Thrones',
-    'The Mandalorian'
-  ];
-  tvShowName: string = '';
+  tvShowList: TVShow[] = [];
+  id: string = '';
+  showname: string = '';
+  channel: string = '';
+  parentalGuidance: string = '';
 
-  addTvShows() {
-    this.tvShowList.push(this.tvShowName);
+  constructor(private tvShowListService: TVShowListService) {
+    this.tvShowList = this.tvShowListService.getTVShowList();
+  }
+
+  addShow(): void {
+    this.tvShowListService.addShow(this.id, this.showname, this.channel, this.parentalGuidance);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.showname = '';
+    this.channel = '';
+    this.parentalGuidance = '';
   }
 }

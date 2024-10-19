@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LectureListService, LectureItem } from '../services/lecturelist/lecturelist.service';
 
 @Component({
   selector: 'app-lecturelist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './lecturelist.component.css'
 })
 export class LecturelistComponent {
-  lectureList: string[] = [
-    'Introduction to Computer Science',
-    'Fundamentals of Programming',
-    'Data Structures and Algorithms',
-    'Web Development Basics',
-    'Software Engineering Principles'
-  ];
-  lectureName: string = '';
+  lectureList: LectureItem[] = [];
+  id: string = '';
+  subject: string = '';
+  lecture: string = '';
 
-  addLectures() {
-    this.lectureList.push(this.lectureName);
+  constructor(private lectureListService: LectureListService) {
+    this.lectureList = this.lectureListService.getLectureList();
+  }
+
+  addLectureItem(): void {
+    this.lectureListService.addLectureItem(this.id, this.subject, this.lecture);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.subject = '';
+    this.lecture = '';
   }
 }

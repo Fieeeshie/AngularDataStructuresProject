@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ToolListService, ToolList } from '../services/toollist/toollist.service';
 
 @Component({
   selector: 'app-toollist',
@@ -6,16 +7,21 @@ import { Component } from '@angular/core';
   styleUrl: './toollist.component.css'
 })
 export class ToollistComponent {
-  toolList: string[] = [
-    'Hammer', 
-    'Screwdriver', 
-    'Wrench', 
-    'Pliers', 
-    'Drill'];
- 
-  toolName: string = '';
+  tools: ToolList[] = [];
+  id: string = '';
+  tool: string = '';
 
-  addTools() {
-    this.toolList.push(this.toolName);
+  constructor(private toolListService: ToolListService) {
+    this.tools = this.toolListService.getTools();
+  }
+
+  addTool(): void {
+    this.toolListService.addTool(this.id, this.tool);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.tool = '';
   }
 }

@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Animal List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Animal Name" [(ngModel)]="animalName"/>
-  <button type="button" class="btn btn-primary" (click)="addAnimals()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let animal of animalList">
-      {{animal}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Animal List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Animal</th>
+        <th>Breed</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let animal of animals">
+        <td>{{ animal.id }}</td>
+        <td>{{ animal.animal }}</td>
+        <td>{{ animal.breed }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Animal</h3>
+  <form (ngSubmit)="addAnimal()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="animal">Animal:</label>
+      <input type="text" [(ngModel)]="animal" name="animal" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="breed">Breed:</label>
+      <input type="text" [(ngModel)]="breed" name="breed" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Animal</button>
+  </form>
 </div>

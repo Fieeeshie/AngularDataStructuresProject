@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CarmodelListService, CarmodelList } from '../services/carmodellist/carmodellist.service';
 
 @Component({
   selector: 'app-carmodellist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './carmodellist.component.css'
 })
 export class CarmodellistComponent {
-  carModelList: string[] = [
-    'Toyota Vios',
-    'Mitsubishi Montero Sport',
-    'Honda CR-V',
-    'Nissan Navara',
-    'Ford Ranger'
-  ];
-  carModelName: string = '';
+  cars: CarmodelList[] = [];
+  id: string = '';
+  carName: string = '';
+  yearReleased: number = 0;
 
-  addCarModels() {
-    this.carModelList.push(this.carModelName);
+  constructor(private carmodelListService: CarmodelListService) {
+    this.cars = this.carmodelListService.getCars();
+  }
+
+  addCar(): void {
+    this.carmodelListService.addCar(this.id, this.carName, this.yearReleased);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.carName = '';
+    this.yearReleased = 0;
   }
 }

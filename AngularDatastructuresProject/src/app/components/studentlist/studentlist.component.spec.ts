@@ -1,23 +1,29 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { Component } from '@angular/core';
+import { StudentListService, StudentList } from '../services/studentlist/studentlist.service';
 
-import { StudentlistComponent } from './studentlist.component';
+@Component({
+  selector: 'app-studentlist',
+  templateUrl: './studentlist.component.html',
+  styleUrls: ['./studentlist.component.css'],
+})
+export class StudentListComponent {
+  students: StudentList[] = [];
+  id: string = '';
+  name: string = '';
+  age: number = 0;
 
-describe('StudentlistComponent', () => {
-  let component: StudentlistComponent;
-  let fixture: ComponentFixture<StudentlistComponent>;
+  constructor(private studentListService: StudentListService) {
+    this.students = this.studentListService.getStudents();
+  }
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [StudentlistComponent]
-    })
-    .compileComponents();
+  addStudent(): void {
+    this.studentListService.addStudent(this.id, this.name, this.age);
+    this.clearForm();
+  }
 
-    fixture = TestBed.createComponent(StudentlistComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+  clearForm(): void {
+    this.id = '';
+    this.name = '';
+    this.age = 0;
+  }
+}

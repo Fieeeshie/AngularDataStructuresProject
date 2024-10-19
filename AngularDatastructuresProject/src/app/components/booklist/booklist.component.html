@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Book List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Book Name" [(ngModel)]="bookName"/>
-  <button type="button" class="btn btn-primary" (click)="addBooks()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let book of bookList">
-      {{book}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Book List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Year Published</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let book of books">
+        <td>{{ book.id }}</td>
+        <td>{{ book.bookname }}</td>
+        <td>{{ book.yearPublished }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Book</h3>
+  <form (ngSubmit)="addBook()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" [(ngModel)]="bookname" name="bookname" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="year">Year Published:</label>
+      <input type="number" [(ngModel)]="yearPublished" name="yearPublished" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Book</button>
+  </form>
 </div>

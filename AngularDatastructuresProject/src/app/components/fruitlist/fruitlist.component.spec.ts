@@ -11,7 +11,7 @@ describe('FruitlistComponent', () => {
       imports: [FruitlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(FruitlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

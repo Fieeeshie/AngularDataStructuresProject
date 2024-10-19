@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Event List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Event Name" [(ngModel)]="eventName"/>
-  <button type="button" class="btn btn-primary" (click)="addEvents()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let event of eventList">
-      {{event}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Event List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Event</th>
+        <th>Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let event of events">
+        <td>{{ event.id }}</td>
+        <td>{{ event.event }}</td>
+        <td>{{ event.location }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Event</h3>
+  <form (ngSubmit)="addEvent()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="event">Event:</label>
+      <input type="text" [(ngModel)]="event" name="event" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" [(ngModel)]="location" name="location" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Event</button>
+  </form>
 </div>

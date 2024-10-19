@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FlowerListService, Flower } from '../services/flowerlist/flowerlist.service';
 
 @Component({
   selector: 'app-flowerlist',
@@ -6,17 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './flowerlist.component.css'
 })
 export class FlowerlistComponent {
-  flowerList: string[] = [
-    'Sampaguita',
-    'Waling-Waling',
-    'Bougainvillea',
-    'Roses',
-    'Orchids'
-  ];
-  flowerName: string = '';
+  flowerList: Flower[] = [];
+  id: string = '';
+  flower: string = '';
+  price: number = 0;
 
-  addFlowers() {
-    this.flowerList.push(this.flowerName);
+  constructor(private flowerListService: FlowerListService) {
+    this.flowerList = this.flowerListService.getFlowerList();
   }
 
+  addFlower(): void {
+    this.flowerListService.addFlower(this.id, this.flower, this.price);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.flower = '';
+    this.price = 0;
+  }
 }

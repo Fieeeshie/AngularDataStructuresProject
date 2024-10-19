@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BudgetListService, BudgetList } from '../services/budgetlist/budgetlist.service';
 
 @Component({
   selector: 'app-budgetlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './budgetlist.component.css'
 })
 export class BudgetlistComponent {
-  budgetList: string[] = [
-    'Personal Savings Plan',
-    'Emergency Fund',
-    'Monthly Expenses Tracker',
-    'Retirement Savings Account',
-    'Investment in Mutual Funds'
-  ];
-  budgetName: string = '';
+  budgets: BudgetList[] = [];
+  id: string = '';
+  amount: number = 0;
+  day: string = '';
 
-  addBudgets() {
-    this.budgetList.push(this.budgetName);
+  constructor(private budgetListService: BudgetListService) {
+    this.budgets = this.budgetListService.getBudgets();
+  }
+
+  addBudget(): void {
+    this.budgetListService.addBudget(this.id, this.amount, this.day);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.amount = 0;
+    this.day = '';
   }
 }

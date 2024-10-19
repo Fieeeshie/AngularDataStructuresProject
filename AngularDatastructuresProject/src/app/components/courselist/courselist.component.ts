@@ -1,21 +1,27 @@
 import { Component } from '@angular/core';
+import { CourseListService, CourseList } from '../services/courselist/courselist.service';
 
 @Component({
   selector: 'app-courselist',
   templateUrl: './courselist.component.html',
   styleUrl: './courselist.component.css'
 })
-export class CourselistComponent {
-  courseList: string[] = [
-    'Bachelor of Science in Information Technology',
-    'Bachelor of Arts in Communication',
-    'Bachelor of Science in Business Administration',
-    'Bachelor of Science in Accountancy',
-    'Bachelor of Science in Civil Engineering'
-  ];
+export class CourseListComponent {
+  courses: CourseList[] = [];
+  id: string = '';
   courseName: string = '';
 
-  addCourses() {
-    this.courseList.push(this.courseName);
+  constructor(private courseListService: CourseListService) {
+    this.courses = this.courseListService.getCourses();
+  }
+
+  addCourse(): void {
+    this.courseListService.addCourse(this.id, this.courseName);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.courseName = '';
   }
 }

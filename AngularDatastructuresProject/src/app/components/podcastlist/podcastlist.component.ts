@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PodcastListService, PodcastList } from '../services/podcastlist/podcastlist.service';
 
 @Component({
   selector: 'app-podcastlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './podcastlist.component.css'
 })
 export class PodcastlistComponent {
-  podcastList: string[] = [
-    'The Daily',
-    'Stuff You Should Know',
-    'Crime Junkie',
-    'How I Built This',
-    'The Joe Rogan Experience'
-  ];
-  podcastName: string = '';
+  podcasts: PodcastList[] = [];
+  id: string = '';
+  contentCreator: string = '';
+  description: string = '';
 
-  addPodcasts() {
-    this.podcastList.push(this.podcastName);
+  constructor(private podcastListService: PodcastListService) {
+    this.podcasts = this.podcastListService.getPodcasts();
+  }
+
+  addPodcast(): void {
+    this.podcastListService.addPodcast(this.id, this.contentCreator, this.description);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.contentCreator = '';
+    this.description = '';
   }
 }

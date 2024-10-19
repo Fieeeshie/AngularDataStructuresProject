@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Composer List!</h1>
+<div>
+  <h2>Composer List</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Composer</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let composer of composers">
+        <td>{{ composer.id }}</td>
+        <td>{{ composer.composer }}</td>
+        <td>{{ composer.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
   <br>
-  <input type="text" placeholder="Enter Composer Name" [(ngModel)]="composerName"/>
-  <button type="button" class="btn btn-primary" (click)="addComposers()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let composer of composerList">
-      {{composer}}
-    </li>
-  </ul>
+  <h3>Add Composer</h3>
+  <form (ngSubmit)="addComposer()">
+    <div>
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id"/>
+    </div>
+    <div>
+      <label for="composer">Composer:</label>
+      <input type="text" [(ngModel)]="composer" name="composer"/>
+    </div>
+    <div>
+      <label for="gender">Gender:</label>
+      <input type="text" [(ngModel)]="gender" name="gender"/>
+    </div>
+    <button type="submit">Add Composer</button>
+  </form>
 </div>

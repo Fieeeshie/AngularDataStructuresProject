@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LanguageListService, LanguageList } from '../services/languagelist/languagelist.service';
 
 @Component({
   selector: 'app-languagelist',
@@ -6,16 +7,21 @@ import { Component } from '@angular/core';
   styleUrl: './languagelist.component.css'
 })
 export class LanguagelistComponent {
-  languageList: string[] = [
-    'Filipino',
-    'English',
-    'Cebuano',
-    'Ilocano',
-    'Hiligaynon'
-  ];
-  languageName: string = '';
+  languages: LanguageList[] = [];
+  id: string = '';
+  language: string = '';
 
-  addLanguages() {
-    this.languageList.push(this.languageName);
+  constructor(private languageListService: LanguageListService) {
+    this.languages = this.languageListService.getLanguages();
+  }
+
+  addLanguage(): void {
+    this.languageListService.addLanguage(this.id, this.language);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.language = '';
   }
 }

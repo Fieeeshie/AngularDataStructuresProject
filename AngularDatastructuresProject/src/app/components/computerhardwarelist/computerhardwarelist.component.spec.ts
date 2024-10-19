@@ -11,7 +11,7 @@ describe('ComputerhardwarelistComponent', () => {
       imports: [ComputerhardwarelistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(ComputerhardwarelistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

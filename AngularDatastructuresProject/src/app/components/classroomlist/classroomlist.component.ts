@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ClassroomListService, Classroom } from '../services/classroomlist/classroomlist.service';
 
 @Component({
   selector: 'app-classroomlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './classroomlist.component.css'
 })
 export class ClassroomlistComponent {
-  classroomList: string[] = [
-    'Room 169 - Science Lab',
-    'Room 269 - Math Lab',
-    'Room 369 - Computer Lab',
-    'Room 469 - Art Room',
-    'Room 569 - Library'
-  ];
-  classroomName: string = '';
+  classroomList: Classroom[] = [];
+  id: string = '';
+  room: string = '';
+  floor: number = 0;
 
-  addClassrooms() {
-    this.classroomList.push(this.classroomName);
+  constructor(private classroomListService: ClassroomListService) {
+    this.classroomList = this.classroomListService.getClassroomList();
+  }
+
+  addClassroom(): void {
+    this.classroomListService.addClassroom(this.id, this.room, this.floor);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.room = '';
+    this.floor = 0;
   }
 }

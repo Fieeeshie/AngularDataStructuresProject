@@ -1,21 +1,29 @@
-  import { Component } from '@angular/core';
+import { Component } from '@angular/core';
+import { GameListService, GameList } from '../services/gamelist/gamelist.service';
 
-  @Component({
-    selector: 'app-gamelist',
-    templateUrl: './gamelist.component.html',
-    styleUrl: './gamelist.component.css'
-  })
-  export class GamelistComponent {
-    gameList: string[] = [
-      'Mobile Legends: Bang Bang',
-      'Call of Duty: Mobile',
-      'Genshin Impact',
-      'Valorant',
-      'PUBG Mobile'
-    ];
-    gameName: string = '';
+@Component({
+  selector: 'app-gamelist',
+  templateUrl: './gamelist.component.html',
+  styleUrl: './gamelist.component.css'
+})
+export class GamelistComponent {
+  games: GameList[] = [];
+  id: string = '';
+  game: string = '';
+  genre: string = '';
 
-    addGames() {
-      this.gameList.push(this.gameName);
-    }
+  constructor(private gameListService: GameListService) {
+    this.games = this.gameListService.getGames();
   }
+
+  addGame(): void {
+    this.gameListService.addGame(this.id, this.game, this.genre);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.game = '';
+    this.genre = '';
+  }
+}

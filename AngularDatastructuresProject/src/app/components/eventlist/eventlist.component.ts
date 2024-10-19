@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventListService, EventList } from '../services/eventlist/eventlist.service';
 
 @Component({
   selector: 'app-eventlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './eventlist.component.css'
 })
 export class EventlistComponent {
-  eventList: string[] = [
-    'Sinulog Festival',
-    'Ati-Atihan Festival',
-    'Pahiyas Festival',
-    'Panagbenga Festival',
-    'Kadayawan Festival'
-  ];
-  eventName: string = '';
+  events: EventList[] = [];
+  id: string = '';
+  event: string = '';
+  location: string = '';
 
-  addEvents() {
-    this.eventList.push(this.eventName);
+  constructor(private eventListService: EventListService) {
+    this.events = this.eventListService.getEvents();
+  }
+
+  addEvent(): void {
+    this.eventListService.addEvent(this.id, this.event, this.location);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.event = '';
+    this.location = '';
   }
 }

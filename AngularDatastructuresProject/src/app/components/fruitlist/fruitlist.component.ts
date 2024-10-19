@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FruitListService, FruitList } from '../services/fruitlist/fruitlist.service';
 
 @Component({
   selector: 'app-fruitlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './fruitlist.component.css'
 })
 export class FruitlistComponent {
-  fruitList: string[] = [
-    'Mango',
-    'Banana',
-    'Pineapple',
-    'Coconut',
-    'Durian'
-  ];
-  fruitName: string = '';
+  fruits: FruitList[] = [];
+  id: string = '';
+  name: string = '';
+  number: number = 0;
 
-  addFruits() {
-    this.fruitList.push(this.fruitName);
+  constructor(private fruitListService: FruitListService) {
+    this.fruits = this.fruitListService.getFruits();
+  }
+
+  addFruit(): void {
+    this.fruitListService.addFruit(this.id, this.name, this.number);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.name = '';
+    this.number = 0;
   }
 }

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LaptopSpecificationListService, LaptopSpecification } from '../services/laptopspecificationlist/laptopspecificationlist.service';
 
 @Component({
   selector: 'app-laptopspecificationslist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './laptopspecificationslist.component.css'
 })
 export class LaptopspecificationslistComponent {
-  laptopSpecificationList: string[] = [
-    'Intel Core i5',
-    'Intel Core i7',
-    '16GB RAM',
-    '512GB SSD',
-    'NVIDIA GeForce GTX 1650'
-  ];
-  laptopSpecificationName: string = '';
+  laptopSpecificationList: LaptopSpecification[] = [];
+  id: string = '';
+  laptop: string = '';
+  specs: string = '';
+  price: number = 0;
 
-  addLaptopSpecifications() {
-    this.laptopSpecificationList.push(this.laptopSpecificationName);
+  constructor(private laptopSpecificationListService: LaptopSpecificationListService) {
+    this.laptopSpecificationList = this.laptopSpecificationListService.getLaptopSpecificationList();
+  }
+
+  addLaptopSpecification(): void {
+    this.laptopSpecificationListService.addLaptopSpecification(this.id, this.laptop, this.specs, this.price);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.laptop = '';
+    this.specs = '';
+    this.price = 0;
   }
 }

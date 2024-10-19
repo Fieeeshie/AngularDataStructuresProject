@@ -1,23 +1,30 @@
 import { Component } from '@angular/core';
+import { StudentListService, StudentList } from '../services/studentlist/studentlist.service';
 
 @Component({
   selector: 'app-studentlist',
   templateUrl: './studentlist.component.html',
-  styleUrl: './studentlist.component.css'
+  styleUrls: ['./studentlist.component.css'],
 })
-export class StudentlistComponent {
-  studentList: string[] = [
-    'Toribio, Fiercieval',
-    'Walter Inductivo',
-    'Cano Roerenz',
-    'Taay James Kent',
-    'Xavier De Jesus',
-    'Rodney Idanan',
+export class StudentListComponent {
+  students: StudentList[] = [];
+  id: string = '';
+  name: string = '';
+  age: number = 0;
 
-  ];
-  studentName: string = '';
+  constructor(private studentListService: StudentListService) {
+    this.students = this.studentListService.getStudents();
+  }
 
-  addStudents() {
-    this.studentList.push(this.studentName);
+  addStudent(): void {
+    this.studentListService.addStudent(this.id, this.name, this.age);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.name = '';
+    this.age = 0;
   }
 }
+

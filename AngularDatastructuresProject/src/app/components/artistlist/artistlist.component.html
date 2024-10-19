@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Artist List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Artist Name" [(ngModel)]="artistName"/>
-  <button type="button" class="btn btn-primary" (click)="addArtists()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let artist of artistList">
-      {{artist}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Artist List</h2>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Artist</th>
+        <th>Gender</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let artist of artists">
+        <td>{{ artist.id }}</td>
+        <td>{{ artist.artist }}</td>
+        <td>{{ artist.gender }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Artist</h3>
+  <form (ngSubmit)="addArtist()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="artist">Artist:</label>
+      <input type="text" [(ngModel)]="artist" name="artist" class="form-control"/>
+    </div>
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <input type="text" [(ngModel)]="gender" name="gender" class="form-control"/>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Artist</button>
+  </form>
 </div>

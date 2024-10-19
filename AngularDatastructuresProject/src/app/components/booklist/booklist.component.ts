@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BookListService, BookList } from '../services/booklist/booklist.service';
 
 @Component({
   selector: 'app-booklist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './booklist.component.css'
 })
 export class BooklistComponent {
-  bookList: string[] = [
-    'Noli Me Tangere by José Rizal',
-    'El Filibusterismo by José Rizal',
-    'The Woman Who Had Two Navels by Nick Joaquin',
-    'Dogeaters by Jessica Hagedorn',
-    'Smaller and Smaller Circles by F.H. Batacan'
-  ];
-  bookName: string = '';
+  books: BookList[] = [];
+  id: string = '';
+  bookname: string = '';
+  yearPublished: number = 0;
 
-  addBooks() {
-    this.bookList.push(this.bookName);
+  constructor(private bookListService: BookListService) {
+    this.books = this.bookListService.getBooks();
+  }
+
+  addBook(): void {
+    this.bookListService.addBook(this.id, this.bookname, this.yearPublished);
+    this.clearFrom();
+  }
+
+  clearFrom(): void {
+    this.id = '';
+    this.bookname = '';
+    this.yearPublished = 0;
   }
 }

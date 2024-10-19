@@ -11,7 +11,7 @@ describe('TourlistComponent', () => {
       imports: [TourlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(TourlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

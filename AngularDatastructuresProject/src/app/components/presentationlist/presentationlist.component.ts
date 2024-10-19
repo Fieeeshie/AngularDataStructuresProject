@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PresentationListService, PresentationList } from '../services/presentationlist/presentationlist.service';
 
 @Component({
   selector: 'app-presentationlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './presentationlist.component.css'
 })
 export class PresentationlistComponent {
-  presentationList: string[] = [
-    'The Daily',
-    'Stuff You Should Know',
-    'Crime Junkie',
-    'How I Built This',
-    'The Joe Rogan Experience'
-  ];
-  presentationName: string = '';
+  presentations: PresentationList[] = [];
+  id: string = '';
+  title: string = '';
+  softwareTool: string = '';
 
-  addPresentations() {
-    this.presentationList.push(this.presentationName);
+  constructor(private presentationListService: PresentationListService) {
+    this.presentations = this.presentationListService.getPresentations();
+  }
+
+  addPresentation(): void {
+    this.presentationListService.addPresentation(this.id, this.title, this.softwareTool);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.title = '';
+    this.softwareTool = '';
   }
 }

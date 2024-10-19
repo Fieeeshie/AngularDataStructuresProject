@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { StationeryListService, StationeryItem } from '../services/stationerylist/stationerylist.service';
+
 
 @Component({
   selector: 'app-stationerylist',
@@ -6,16 +8,21 @@ import { Component } from '@angular/core';
   styleUrl: './stationerylist.component.css'
 })
 export class StationerylistComponent {
-  stationeryList: string[] = [
-    'Notebook',
-    'Pen',
-    'Pencil',
-    'Eraser',
-    'Highlighter'
-  ];
-  stationeryName: string = '';
+  stationeryList: StationeryItem[] = [];
+  id: string = '';
+  item: string = '';
 
-  addStationeries() {
-    this.stationeryList.push(this.stationeryName);
+  constructor(private stationeryListService: StationeryListService) {
+    this.stationeryList = this.stationeryListService.getStationeryList();
+  }
+
+  addStationeryItem(): void {
+    this.stationeryListService.addStationeryItem(this.id, this.item);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.item = '';
   }
 }

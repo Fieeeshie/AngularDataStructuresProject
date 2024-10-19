@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Music Playlist!</h1>
-  <br>
-  <input type="text" placeholder="Enter Music Name" [(ngModel)]="musicName"/>
-  <button type="button" class="btn btn-primary" (click)="addMusics()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let music of musicList">
-      {{music}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Music Playlist</h2>
+
+  <table class="table table-striped table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Id</th>
+        <th>Music</th>
+        <th>Genre</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of playlist">
+        <td>{{ item.id }}</td>
+        <td>{{ item.music }}</td>
+        <td>{{ item.genre }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Music</h3>
+  <form (ngSubmit)="addMusic()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="music">Music:</label>
+      <input type="text" [(ngModel)]="music" name="music" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre:</label>
+      <input type="text" [(ngModel)]="genre" name="genre" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Music</button>
+  </form>
 </div>

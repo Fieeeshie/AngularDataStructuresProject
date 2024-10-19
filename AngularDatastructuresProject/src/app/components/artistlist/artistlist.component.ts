@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArtistListService, ArtistList } from '../services/artistlist/artistlist.service';
 
 @Component({
   selector: 'app-artistlist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './artistlist.component.css'
 })
 export class ArtistlistComponent {
-  artistList: string[] = [
-    'Juan Luna',
-    'Fernando Amorsolo',
-    'Bencab (Benedicto Cabrera)',
-    'Carmen Guerrero Nakpil',
-    'Ang Kiukok'
-  ];
-  artistName: string = '';
+  artists: ArtistList[] = [];
+  id: string = '';
+  artist: string = '';
+  gender: string = '';
 
-  addArtists() {
-    this.artistList.push(this.artistName);
+  constructor(private artistListService: ArtistListService) {
+    this.artists = this.artistListService.getArtists();
+  }
+
+  addArtist(): void {
+    this.artistListService.addArtist(this.id, this.artist, this.gender);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.artist = '';
+    this.gender = '';
   }
 }

@@ -11,7 +11,7 @@ describe('BudgetlistComponent', () => {
       imports: [BudgetlistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(BudgetlistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

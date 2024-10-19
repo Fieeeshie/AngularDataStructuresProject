@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BuildingListService, BuildingList } from '../services/buildinglist/buildinglist.service';
 
 @Component({
   selector: 'app-buildinglist',
@@ -6,16 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './buildinglist.component.css'
 })
 export class BuildinglistComponent {
-  buildingList: string[] = [
-    'Makati City Hall',
-    'BGC Stopover Pavilion',
-    'SM Megamall',
-    'Greenbelt Mall',
-    'The Manila Ocean Park'
-  ]
-  buildingName: string = '';
+  buildings: BuildingList[] = [];
+  id: string = '';
+  buildingname: string = '';
+  location: string = '';
 
-  addBuildings() {
-    this.buildingList.push(this.buildingName);
+  constructor(private buildingListService: BuildingListService) {
+    this.buildings = this.buildingListService.getBuildings();
+  }
+
+  addBuilding(): void {
+    this.buildingListService.addBuilding(this.id, this.buildingname, this.location);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.buildingname = '';
+    this.location = '';
   }
 }

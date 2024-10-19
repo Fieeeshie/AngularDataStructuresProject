@@ -1,12 +1,37 @@
-<div class="container my-5">
-  <h1>Flower List!</h1>
-  <br>
-  <input type="text" placeholder="Enter Flower Name" [(ngModel)]="flowerName"/>
-  <button type="button" class="btn btn-primary" (click)="addFlowers()">Submit</button>
-  <ul>
-    <br>
-    <li *ngFor="let flower of flowerList">
-      {{flower}}
-    </li>
-  </ul>
+<div class="container mt-4">
+  <h2 class="text-center mb-4">Flower List</h2>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Flower</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let flower of flowerList">
+        <td>{{ flower.id }}</td>
+        <td>{{ flower.flower }}</td>
+        <td>₱{{ flower.price | number: '1.2-2' }}</td> 
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="mt-4">Add Flower</h3>
+  <form (ngSubmit)="addFlower()" class="mt-3">
+    <div class="form-group">
+      <label for="id">Id:</label>
+      <input type="text" [(ngModel)]="id" name="id" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="flower">Flower:</label>
+      <input type="text" [(ngModel)]="flower" name="flower" class="form-control" required />
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" [(ngModel)]="price" name="price" class="form-control" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Add Flower</button>
+  </form>
 </div>

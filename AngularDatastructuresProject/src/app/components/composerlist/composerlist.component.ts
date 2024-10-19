@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ComposerListService, ComposerList } from '../services/composerlist/composerlist.service';
 
 @Component({
   selector: 'app-composerlist',
@@ -6,13 +7,23 @@ import { Component } from '@angular/core';
   styleUrl: './composerlist.component.css'
 })
 export class ComposerlistComponent {
-  composerList: string[] = [
-    'Justin Vasquez',
-    'Micheal Pangilan',
-  ];
-  composerName: string = '';
+  composers: ComposerList[] = [];
+  id: string = '';
+  composer: string = '';
+  gender: string = '';
 
-  addComposers() {
-    this.composerList.push(this.composerName);
+  constructor(private composerListService: ComposerListService) {
+    this.composers = this.composerListService.getComposers();
+  }
+
+  addComposer(): void {
+    this.composerListService.addComposer(this.id, this.composer, this.gender);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.composer = '';
+    this.gender = '';
   }
 }

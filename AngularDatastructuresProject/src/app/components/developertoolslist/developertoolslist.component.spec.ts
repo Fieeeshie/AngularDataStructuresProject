@@ -11,7 +11,7 @@ describe('DevelopertoolslistComponent', () => {
       imports: [DevelopertoolslistComponent]
     })
     .compileComponents();
-
+    
     fixture = TestBed.createComponent(DevelopertoolslistComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

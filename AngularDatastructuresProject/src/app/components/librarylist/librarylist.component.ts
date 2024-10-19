@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LibraryListService, LibraryList } from '../services/librarylist/librarylist.service';
 
 @Component({
   selector: 'app-librarylist',
@@ -6,16 +7,25 @@ import { Component } from '@angular/core';
   styleUrl: './librarylist.component.css'
 })
 export class LibrarylistComponent {
-  libraryList: string[] = [
-    'National Library of the Philippines',
-    'Ateneo de Manila University Library',
-    'University of the Philippines Main Library',
-    'De La Salle University Library',
-    'San Beda University Library'
-  ];
+  libraries: LibraryList[] = [];
+  id: string = '';
   libraryName: string = '';
+  opening: string = '';
+  closing: string = '';
 
-  addLibraries() {
-    this.libraryList.push(this.libraryName);
+  constructor(private libraryListService: LibraryListService) {
+    this.libraries = this.libraryListService.getLibraries();
+  }
+
+  addLibrary(): void {
+    this.libraryListService.addLibrary(this.id, this.libraryName, this.opening, this.closing);
+    this.clearForm();
+  }
+
+  clearForm(): void {
+    this.id = '';
+    this.libraryName = '';
+    this.opening = '';
+    this.closing = '';
   }
 }
